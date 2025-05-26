@@ -8,22 +8,73 @@
 </head>
 
 <body>
-    <div id="header">
-        <h1>YOLOv8 Object Detection Example</h1>
-        <p>Serving : <code class="code">yolov8n.onnx</code></p>
-        <p>Size : <code class="code">416x416</code></p>
-    </div>
     <div id="root">
         <div class="App">      
-            <div class="content">              
-                <video id="video" autoPlay="true" playsInline="true" muted="true"></video>
-                <canvas width="416" height="416"></canvas>
+            <div class="content">
+                <!-- 摄像头模式 -->
+                <div id="cameraMode">
+                    <video id="video" autoPlay="true" playsInline="true" muted="true"></video>
+                    <canvas id="cameraCanvas" width="416" height="416"></canvas>
+                </div>
+                
+                <!-- 图片模式 - 左右分栏 -->
+                <div id="imageMode" style="display: none;">
+                    <div class="split-view">
+                        <div class="original-container">
+                            <div class="image-wrapper">
+                                <img id="imagePreview" style="max-width: 100%; max-height: 100%;" />
+                            </div>
+                        </div>
+                        <div class="result-container">
+                            <div class="image-wrapper">
+                                <canvas id="resultCanvas" width="416" height="416"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 视频模式 -->
+                <div id="videoMode" style="display: none;">
+                    <div class="video-container">
+                        <video id="videoPlayer"></video>
+                        <canvas id="videoCanvas" width="416" height="416"></canvas>
+                        <div class="video-controls">
+                            <button id="playPauseBtn">暂停</button>
+                            <div class="progress-container">
+                                <div id="progressBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 放大查看模式 -->
+                <div id="zoomMode" class="zoom-container" style="display: none;">
+                    <button class="close-zoom">&times;</button>
+                    <div class="zoom-content" id="zoomContent"></div>
+                    <div class="zoom-controls">
+                        <button id="zoomIn">放大 +</button>
+                        <button id="zoomOut">缩小 -</button>
+                        <button id="zoomReset">重置</button>
+                    </div>
+                </div>
             </div> 
         </div>
     </div>
-    <div>
-    <button id="runInference">Run Inference</button>
-    <button id="stopInference">Stop Inference</button>
+    <div id="controls">
+        <button id="runInference">摄像头检测</button>
+        <button id="stopInference">停止检测</button>
+        <div class="file-upload">
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;" />
+            <button id="uploadImageBtn">上传图片</button>
+        </div>
+        <div class="file-upload">
+            <input type="file" id="videoUpload" accept="video/*" style="display: none;" />
+            <button id="uploadVideoBtn">上传视频</button>
+        </div>
+        <button id="processImage" style="display: none;">处理图片</button>
+        <button id="processVideo" style="display: none;">处理视频</button>
+        <button id="backToMain" style="display: none;">返回</button>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>
