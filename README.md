@@ -1,5 +1,5 @@
 # Yolov8-Object-Detection-on-Browser
-纯前端实现yolov8识别
+纯前端实现yolov8识别,支持识别图片、视频、本地摄像头
 
 <p align="center">
   <img src="img/screenshot.jpg" />
