@@ -1,3 +1,6 @@
+# Yolov8-Object-Detection-on-Browser
+纯前端实现yolov8识别
+
 <p align="center">
   <img src="img/screenshot.jpg" />
 </p>
